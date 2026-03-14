@@ -37,6 +37,7 @@ export interface MenuItemInput {
   description?: string;
   image_url?: string;
   spicy_level?: 0 | 1 | 2 | 3;
+  sort_order?: number;
 }
 
 export interface ListMenuOptions {
@@ -126,12 +127,11 @@ export async function createMenuItem(input: MenuItemInput): Promise<MenuItem> {
 
   if (error) throw error;
 
-  await emitEvent(tenant.id, 'entities', 'menu_item.created', {
-    item_id: data.id,
+  await emitEvent({ tenantId: tenant.id, module: 'entities', event: 'menu_item.created', entityType: 'menu_item', entityId: data.id, payload: {
     name: data.name,
     price: input.price,
     category: input.category_slug,
-  });
+  } });
 
   return data as MenuItem;
 }
@@ -175,10 +175,9 @@ export async function updateMenuItem(
 
   if (error) throw error;
 
-  await emitEvent(tenant.id, 'entities', 'menu_item.updated', {
-    item_id: id,
+  await emitEvent({ tenantId: tenant.id, module: 'entities', event: 'menu_item.updated', entityType: 'menu_item', entityId: id, payload: {
     changes: Object.keys(input),
-  });
+  } });
 
   return data as MenuItem;
 }
@@ -197,10 +196,7 @@ export async function toggleAvailability(id: string, available: boolean): Promis
 
   if (error) throw error;
 
-  await emitEvent(tenant.id, 'entities', 'menu_item.availability_changed', {
-    item_id: id,
-    available,
-  });
+  await emitEvent({ tenantId: tenant.id, module: 'entities', event: 'menu_item.availability_changed', entityType: 'menu_item', entityId: id, payload: { available } });
 
   return data as MenuItem;
 }
