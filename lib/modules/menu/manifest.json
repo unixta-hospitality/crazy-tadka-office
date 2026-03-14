@@ -1,0 +1,18 @@
+{
+  "id": "entities",
+  "vertical": "hospitality",
+  "name": "Menu Management",
+  "version": "1.0.0",
+  "reads": ["entities"],
+  "writes": ["entities", "platform_events"],
+  "emits": ["menu_item.created", "menu_item.updated", "menu_item.availability_changed"],
+  "listens": [],
+  "permissions": ["view_listings", "manage_listings"],
+  "billing": { "type": "flat", "tier": "starter" },
+  "entity_types": ["menu_item", "menu_category"],
+  "labels": {
+    "plural": "Menu",
+    "singular": "Menu Item",
+    "new": "Add Item"
+  }
+}
