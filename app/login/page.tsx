@@ -43,7 +43,7 @@ function LoginForm() {
 
   return (
     <main className="flex min-h-screen items-center justify-center p-4"
-      style={{ background: 'var(--bg, #0f0f0f)' }}>
+      style={{ background: 'var(--bg)' }}>
       <div className="w-full max-w-sm space-y-6">
 
         {/* Brand */}
@@ -52,20 +52,20 @@ function LoginForm() {
             style={{ background: '#E63946' }}>
             CT
           </div>
-          <h1 className="text-2xl font-bold text-[var(--text,#f5f5f5)]"
-            style={{ fontFamily: "var(--font-playfair, 'Playfair Display', serif)" }}>
+          <h1 className="text-2xl font-bold"
+            style={{ color: 'var(--text)', fontFamily: "var(--font-playfair, 'Playfair Display', serif)" }}>
             Crazy Tadka
           </h1>
-          <p className="text-sm text-[var(--muted,#888)]">Office Portal — Bold Flavours. Crazy Good.</p>
+          <p className="text-sm" style={{ color: 'var(--muted)' }}>Office Portal — Bold Flavours. Crazy Good.</p>
         </div>
 
         {/* Form card */}
         <form onSubmit={handleSubmit}
           className="rounded-xl border p-6 space-y-4"
-          style={{ background: 'var(--card-bg, #1a1a1a)', borderColor: 'var(--card-border, #2a2a2a)' }}>
+          style={{ background: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
 
           <div className="space-y-1">
-            <label className="text-xs font-medium" style={{ color: 'var(--muted,#888)' }}>
+            <label className="text-xs font-medium" style={{ color: 'var(--muted)' }}>
               Email
             </label>
             <input
@@ -73,14 +73,14 @@ function LoginForm() {
               value={email} onChange={e => setEmail(e.target.value)}
               placeholder="admin@crazytadka.in"
               className="w-full px-3 py-2.5 text-sm rounded-lg border outline-none transition-colors"
-              style={{ background: 'transparent', color: 'var(--text,#f5f5f5)', borderColor: 'var(--card-border,#2a2a2a)' }}
+              style={{ background: 'transparent', color: 'var(--text)', borderColor: 'var(--card-border)' }}
               onFocus={e => (e.target.style.borderColor = '#E63946')}
-              onBlur={e => (e.target.style.borderColor = 'var(--card-border,#2a2a2a)')}
+              onBlur={e => (e.target.style.borderColor = 'var(--card-border)')}
             />
           </div>
 
           <div className="space-y-1">
-            <label className="text-xs font-medium" style={{ color: 'var(--muted,#888)' }}>
+            <label className="text-xs font-medium" style={{ color: 'var(--muted)' }}>
               Password
             </label>
             <input
@@ -88,9 +88,9 @@ function LoginForm() {
               value={password} onChange={e => setPassword(e.target.value)}
               placeholder="••••••••"
               className="w-full px-3 py-2.5 text-sm rounded-lg border outline-none transition-colors"
-              style={{ background: 'transparent', color: 'var(--text,#f5f5f5)', borderColor: 'var(--card-border,#2a2a2a)' }}
+              style={{ background: 'transparent', color: 'var(--text)', borderColor: 'var(--card-border)' }}
               onFocus={e => (e.target.style.borderColor = '#E63946')}
-              onBlur={e => (e.target.style.borderColor = 'var(--card-border,#2a2a2a)')}
+              onBlur={e => (e.target.style.borderColor = 'var(--card-border)')}
             />
           </div>
 
@@ -109,7 +109,7 @@ function LoginForm() {
           </button>
         </form>
 
-        <p className="text-center text-xs" style={{ color: 'var(--muted,#555)' }}>
+        <p className="text-center text-xs" style={{ color: 'var(--muted)' }}>
           Internal staff access only.
         </p>
       </div>
@@ -120,8 +120,8 @@ function LoginForm() {
 export default function LoginPage() {
   return (
     <Suspense fallback={
-      <main className="flex min-h-screen items-center justify-center" style={{ background: 'var(--bg,#0f0f0f)' }}>
-        <div className="text-sm" style={{ color: 'var(--muted,#888)' }}>Loading…</div>
+      <main className="flex min-h-screen items-center justify-center" style={{ background: 'var(--bg)' }}>
+        <div className="text-sm" style={{ color: 'var(--muted)' }}>Loading…</div>
       </main>
     }>
       <LoginForm />
